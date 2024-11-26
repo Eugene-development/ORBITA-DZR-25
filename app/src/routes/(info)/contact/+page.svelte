@@ -1,0 +1,1 @@
+<p class="text-3xl text-red-600 font-bold underline">Контакты</p>
