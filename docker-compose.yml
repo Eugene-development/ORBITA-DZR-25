@@ -1,0 +1,26 @@
+version: "3"
+
+services:
+  svelte:
+    # image: larux/orbita25:261124v4
+    # platform: linux/amd64
+    build:
+      context: .
+      dockerfile: ./docker/node/Dockerfile
+    container_name: "${COMPOSE_PROJECT_NAME}_PROJECT"
+    restart: always
+    pull_policy: always
+    command:
+      "npm run start"
+
+
+  nginx:
+    image: nginx:alpine
+    container_name: "${COMPOSE_PROJECT_NAME}_NGINX"
+    ports:
+      - "4111:80"
+    volumes:
+      - ./:/var/www
+      - ./docker/nginx/conf.d/:/etc/nginx/conf.d/
+    depends_on:
+      - svelte
