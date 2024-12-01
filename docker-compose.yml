@@ -2,16 +2,14 @@ version: "3"
 
 services:
   svelte:
-    # image: larux/orbita25:261124v4
+    image: larux/orbita25:301124
     # platform: linux/amd64
-    build:
-      context: .
-      dockerfile: ./docker/node/Dockerfile
+    # build:
+    #   context: .
+    #   dockerfile: ./docker/node/Dockerfile
     container_name: "${COMPOSE_PROJECT_NAME}_PROJECT"
     restart: always
-    pull_policy: always
-    command:
-      "npm run start"
+    # pull_policy: always
 
 
   nginx:
